@@ -1,5 +1,5 @@
 CC=g++-5
-CFLAGS=-c -g -Wall -std=c++14
+CFLAGS=-c -g -Wall -std=c++11
 LDFLAGS=
 SOURCES=geo_coordinate.cpp gason.cpp json_customer_source.cpp customer_provider.cpp
 TST_COORDINATE_SOURCES=tst_geo_coordinate.cpp
