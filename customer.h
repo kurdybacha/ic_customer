@@ -30,7 +30,6 @@ private:
     GeoCoordinate geocoordinate_;
 };
 
-
 } // namespace ic
 
 #endif /* ifndef _IC_CUSTOMER_ */

@@ -18,7 +18,7 @@ public:
 class CustomerWithinDistanceFilter : public CustomerFilter
 {
 public:
-    CustomerWithinDistanceFilter(const GeoCoordinate &from_geocoordinate, double within_distance)
+    CustomerWithinDistanceFilter(const GeoCoordinate &from_geocoordinate, Distance within_distance)
         : from_geocoordinate_(from_geocoordinate)
         , within_distance_(within_distance)
     {}
@@ -30,7 +30,7 @@ public:
 
 private:
     GeoCoordinate from_geocoordinate_;
-    double within_distance_;
+    Distance within_distance_;
 
 };
 

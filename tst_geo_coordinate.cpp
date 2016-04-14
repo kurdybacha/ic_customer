@@ -1,5 +1,5 @@
-#include "geo_coordinate.h"
 #include "unit_test.h"
+#include "geo_coordinate.h"
 
 namespace {
 
@@ -85,10 +85,10 @@ void GeoCoordinateTest::distance_to_test() const
     ic::GeoCoordinate south_pole_coordinate(-90,0);
     ic::GeoCoordinate london_coordinate(51.500152, -0.126236);
     ic::GeoCoordinate new_your_coordinate(40.71453, -74.00713);
-    COMPARE(ic::GeoCoordinate().distance_to(north_pole_coordinate), 0.0);
-    COMPARE(london_coordinate.distance_to(ic::GeoCoordinate()), 0.0);
-    COMPARE(north_pole_coordinate.distance_to(south_pole_coordinate), 20015109.4154876769);
-    COMPARE(london_coordinate.distance_to(new_your_coordinate), 5570538.4987236410); 
+    COMPARE(ic::GeoCoordinate().distance_to(north_pole_coordinate), ic::Distance(0.0));
+    COMPARE(london_coordinate.distance_to(ic::GeoCoordinate()), ic::Distance(0.0));
+    COMPARE(north_pole_coordinate.distance_to(south_pole_coordinate), ic::Distance(20015109.4154876769));
+    COMPARE(london_coordinate.distance_to(new_your_coordinate), ic::Distance(5570538.4987236410)); 
 }
 
 

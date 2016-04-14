@@ -3,6 +3,16 @@
 
 namespace ic {
 
+/* Distance in meters */
+class Distance
+{
+public:
+    Distance(double meters) : meters_(meters) {}
+    operator double() const { return  meters_; }
+private:
+    double meters_;
+};
+
 class GeoCoordinate
 {
 public:
@@ -24,7 +34,7 @@ public:
     void set_longitude(double longitude);
     double longitude() const;
 
-    double distance_to(const GeoCoordinate &other) const;
+    Distance distance_to(const GeoCoordinate &other) const;
 
 private:
 

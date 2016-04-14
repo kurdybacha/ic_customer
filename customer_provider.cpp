@@ -5,6 +5,7 @@
 
 namespace ic {
 
+
 CustomerProvider::CustomerProvider()
     : filter_(nullptr)
     , source_(nullptr)
@@ -21,14 +22,9 @@ void CustomerProvider::set_filter(CustomerFilter *filter)
 }
 
 
-std::vector<Customer> CustomerProvider::customer_list()
+std::set<Customer, CompareCustomer> CustomerProvider::customer_list(const CompareCustomer &compare_method)
 {
-    //auto compare_method = [](const Customer &left, const Customer &right) { return left.id() < right.id(); };
-    struct compare_method
-    {
-        bool operator()(const Customer &left, const Customer &right) const { return left.id() < right.id(); }
-    };
-    std::vector<Customer> customers;
+    std::set<Customer,CompareCustomer> customers(compare_method);
 
     if (!source_ || !filter_)
         return customers;
@@ -39,7 +35,7 @@ std::vector<Customer> CustomerProvider::customer_list()
     while (source_->available()) {
         std::tie(op_result, customer) = source_->next_customer();
         if (op_result && filter_->accept(customer))
-            customers.insert(std::upper_bound(std::begin(customers), std::end(customers), customer, compare_method()), customer);
+            customers.insert(customer);
     }
 
     return customers;

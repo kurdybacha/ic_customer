@@ -84,7 +84,7 @@ double GeoCoordinate::longitude() const
  *
  * Return 0 if one of the coordinate is invalid.
 */
-double GeoCoordinate::distance_to(const GeoCoordinate &other) const
+Distance GeoCoordinate::distance_to(const GeoCoordinate &other) const
 {
     if (!valid() || !other.valid())
         return 0;

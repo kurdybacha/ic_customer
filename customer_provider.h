@@ -1,14 +1,16 @@
 #ifndef _IC_CUSTOMER_PROVIDER_
 #define _IC_CUSTOMER_PROVIDER_
 
-#include <vector>
 #include <memory>
 #include "customer.h"
+#include <set>
 
 namespace ic {
 
 class CustomerFilter;
 class CustomerSource;
+
+using CompareCustomer = std::function<bool(const Customer &left, const Customer &righ)>;
 
 class CustomerProvider
 {
@@ -18,7 +20,7 @@ public:
     void set_source(CustomerSource *source);
     void set_filter(CustomerFilter *filter);
 
-    std::vector<Customer> customer_list();
+    std::set<Customer,CompareCustomer> customer_list(const CompareCustomer &compare);
 private:
     CustomerProvider(const CustomerProvider &other) = delete;
     void operator=(const CustomerProvider &other) = delete;
